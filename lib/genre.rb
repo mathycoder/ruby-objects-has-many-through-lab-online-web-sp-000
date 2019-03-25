@@ -1,6 +1,6 @@
 class Genre 
   attr_accessor :name 
-  @@all = [] 
+  @@all = []
   
   def self.all 
     @@all 
@@ -9,19 +9,19 @@ class Genre
   def initialize(name)
     @name = name 
     @@all << self 
-   # @@all.unshift(self)
   end 
   
-  def songs
+  def songs 
     Song.all.select do |song|
-      song.genre.name == @name 
+      song.genre == self 
     end 
   end 
   
-  def artists 
-    songs.collect do |genre|
-      genre.artist 
+  def artists
+    songs.collect do |song|
+      song.artist 
     end 
   end 
-
+  
+  
 end 
